@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sending Email via Node.js</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 2.5em; /* Larger heading */
+            margin-bottom: 30px;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+        input[type=email], input[type=text], textarea {
+            width: calc(100% - 24px);
+            padding: 15px; /* Bigger padding */
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1.1em; /* Larger text */
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: calc(100% - 24px);
+            padding: 15px; /* Bigger padding */
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: none;
+            color: white;
+            background-color: #007bff;
+            cursor: pointer;
+            font-size: 1.2em; /* Larger button text */
+            box-sizing: border-box;
+        }
+        input[type=submit]:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            height: 150px; /* Larger text area */
+            resize: vertical;
+        }
+    </style>    
+</head>
+<body>
+    <div>
+        <h1>Send an Email</h1>
+        <ul>
+            <% if(typeof result != 'undefined'){ %>
+                <li><%= result.message %></li>
+            <% } %>
+        </ul>
+        <ul>
+            <% if(typeof errors != 'undefined'){ errors.forEach(error => { %>
+                <li><%= error.message %></li>
+            <% })} %>
+        </ul>
+    </div>
+    <form action="/send-email" method="post">
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required><br>
+        <textarea id="text" name="text" placeholder="Your message" required></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
